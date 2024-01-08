@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="description" content="Saniyeler içerisinde bakım planı oluşturup öğretmeninize gönderin...">
+    <meta name="keywords" content="bakım,bakım planı,bakım planı oluştur,bakım planı örneği,öğretmen,öğrenci">
+    <meta name="author" content="Yusuf ŞERİFOĞLU">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="uso.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Şifre yenile</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  
+  <!--Genel div kapanış-->
+  <div id="sifirladiv" class="main-div">
+    <h3 id="uyarisifirla">Şifreni sıfırla</h3>
+    <input type="email" placeholder="Email..." id="sifresifirlamail"/>
+    <button onclick="sifirla()">Mailime bağlantı gönder</button>
+  </div>
+  
+
+
+
+
+
+
+
+  
+  <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-database.js"></script>
+  
+  <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-storage.js"></script>
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+  
+  <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-firestore.js"></script>
+  
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyBkQ4fQMV08poTWn9jp0etX3rh13KndJKU",
+  authDomain: "eylul23-ddb1a.firebaseapp.com",
+  projectId: "eylul23-ddb1a",
+  storageBucket: "eylul23-ddb1a.appspot.com",
+  messagingSenderId: "623804608112",
+  appId: "1:623804608112:web:a358d123fc7f5810898eb5",
+  measurementId: "G-FZXSEG0194"
+      
+    };
+      
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    // Get a non-default Storage bucket
+    //var storage = firebase.app().storage("gs://paketim");
+    const db = firebase.firestore();
+    var storage = firebase.storage();
+    //var storageRef = storage.ref();
+
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyBkQ4fQMV08poTWn9jp0etX3rh13KndJKU",
+  authDomain: "eylul23-ddb1a.firebaseapp.com",
+  projectId: "eylul23-ddb1a",
+  storageBucket: "eylul23-ddb1a.appspot.com",
+  messagingSenderId: "623804608112",
+  appId: "1:623804608112:web:a358d123fc7f5810898eb5",
+  measurementId: "G-FZXSEG0194"
+    };
+    firebase.initializeApp(config);
+
+    
+  </script>
+  <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta name="description" content="Saniyeler içerisinde bakım planı oluşturup öğretmeninize gönderin...">
+    <meta name="keywords" content="bakım,bakım planı,bakım planı oluştur,bakım planı örneği,öğretmen,öğrenci">
+    <meta name="author" content="Yusuf ŞERİFOĞLU">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="uso.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Bakım planı hazırla</title>
+    <script src="https://cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js"></script>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <!--Genel div açılış-->
+  <div id="geneldivimiz" style="display:none;">
+    
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span id="hocakoduyeri" class="btn btn-success input-group-text" onclick="gecmisgetir()">Geçmiş</span>
+      </div>
+      <input disabled type="text" id="username" class="btn btn-outline-success form-control" placeholder="Okul no" aria-label="Username" aria-describedby="basic-addon1">
+      <div class="input-group-append">
+        <span id="ozgeguzel" onclick="gonder()" class="btn btn-success input-group-text">Yolla</span>
+      </div>
+    </div>
+    
+    
+    <div id="intabyeri"></div>
+ 
+  </div>
+  <div id="icerik"></div>
+  <!--Genel div kapanış-->
+  <div id="login_div" class="main-div">
+    <h3>Giriş yap</h3>
+    <input type="email" placeholder="Email..." id="email_field" />
+    <input type="password" placeholder="şifre" id="password_field" />
+
+    <button onclick="login()">Giriş yap</button>
+    <a href="/kayit.html">Kayıt ol</a>
+    <br><a href="/admin.html">Öğretmen girişi</a>
+    <br><a href="/sifreyenile.html">Şifremi unuttum</a>
+  </div>
+  <div id="user_div" class="loggedin-div">
+    <h3>Hoşgeldinnn</h3>
+    <p id="user_para"></p>
+    <button onclick="logout()">çıkış</button>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-storage.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-firestore.js"></script>
+  
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyBkQ4fQMV08poTWn9jp0etX3rh13KndJKU",
+  authDomain: "eylul23-ddb1a.firebaseapp.com",
+  projectId: "eylul23-ddb1a",
+  storageBucket: "eylul23-ddb1a.appspot.com",
+  messagingSenderId: "623804608112",
+  appId: "1:623804608112:web:a358d123fc7f5810898eb5",
+  measurementId: "G-FZXSEG0194"
+      
+    };
+      
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    var storage = firebase.storage();
+
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+  <script>
+    var config = {
+      apiKey: "AIzaSyBkQ4fQMV08poTWn9jp0etX3rh13KndJKU",
+  authDomain: "eylul23-ddb1a.firebaseapp.com",
+  projectId: "eylul23-ddb1a",
+  storageBucket: "eylul23-ddb1a.appspot.com",
+  messagingSenderId: "623804608112",
+  appId: "1:623804608112:web:a358d123fc7f5810898eb5",
+  measurementId: "G-FZXSEG0194"
+    };
+    firebase.initializeApp(config);
+
+    
+  </script>
+  <script src="script.js"></script>
+</body>
+
+</html>

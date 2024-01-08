@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="uso.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Bakım planı hazırla</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="https://use.fontawesome.com/f98b382a95.js"></script>
+</head>
+
+<body>
+
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="">USO</a>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <img onclick="tumgetir()" src="https://cdn-icons-png.flaticon.com/512/3829/3829933.png" width="30px" height="30px">
+        </li>
+        <li class="nav-item">
+          <img src="https://cdn-icons.flaticon.com/png/512/3839/premium/3839020.png?token=exp=1653925719~hmac=fd77f53015401b19ef5717c184bb2d6b" width="30px" height="30px">
+        </li>
+        <li class="nav-item">
+          <img src="https://cdn-icons-png.flaticon.com/512/4698/4698781.png" width="40px" height="40px">
+        </li>
+      </ul>
+      
+        <input id="username" class="form-control me-2" type="search" placeholder="Okul no" aria-label="Search">
+        <button class="btn btn-outline-success" onclick="getir()">Getir</button>
+      
+    </div>
+  </div>
+</nav>
+  <div id="icerik"></div>
+  <div id="filteryeri">
+    <div class="input-group">
+      <input type="tel" id="altpuan" class="form-control" placeholder="En az">
+      <button class="btn btn-outline-primary">Filtre</button>
+      <input type="tel" id="ustpuan" class="form-control" placeholder="En çok">
+    </div>
+    <button class="btn btn-primary form-control">Getir</button>
+    
+  </div>
+
+
+
+  <br><br>
+  <table class="table table-success table-striped" cellspacing="0" id="tabim${doc.id}" width="100%">
+  <thead>
+    <tr>
+      <th>Veriler</th>
+      <th>Tanı</th>
+    </tr>
+    <tr>
+      <td><textarea id="veri" placeholder="veriler..." rows="15" cols="20">${doc.data().veriler}</textarea></td>
+      <td><textarea id="tani" placeholder="Tanı..." rows="15" cols="20">${doc.data().tanilar}</textarea></td>
+    </tr>
+    <tr>
+      <th>Planlama</th>
+      <th>Uygulama</th>
+    </tr>
+    <tr>
+      <td><textarea id="plan" placeholder="Planlama..." rows="15" cols="20">${doc.data().planlar}</textarea></td>
+      <td><textarea id="uygulama" placeholder="uygulama.." rows="15" cols="20">${doc.data().uygulamalar}</textarea></td>
+    </tr>
+    <tr>
+      <th>Değerlendirme</th>
+      <th>Hoca yorumu</th>
+    </tr>
+    <tr>
+       <td><textarea id="degerlendirme" placeholder="Değerlendirme.." rows="15" cols="20">${doc.data().degerlendirmeler}</textarea></td>
+       <td><p>${doc.data().hocayorumu}</p></td>
+    </tr>
+    
+    <tr>
+      <td colspan="2">
+        <div class="input-group">
+          <button id=silbtn${doc.id} onclick="sil(this)" class="btn btn-outline-danger form-control">Sil</button>
+          <button disabled title="${doc.data().okulno}" id=kaydetbtn${doc.id} onclick="kaydet(this)" class="btn btn-outline-primary form-control">Kaydet</button>
+          <button id=kapatbtn${doc.id} onclick="kapat(this)" class="btn btn-outline-dark form-control">Kapat</button>
+        </div>
+      </td>
+    </tr>
+</table><hr></hr>
+
+  <br><br>
+  <table class="table table-success table-striped" cellspacing="0" id="tabim" width="100%">
+  <thead>
+    <tr>
+      <th>Veriler</th>
+      <th>Tanı</th>
+    </tr>
+    <tr>
+      <td><textarea id="veri" placeholder="veriler..." rows="15" cols="20"></textarea></td>
+      <td><textarea id="tani" placeholder="Tanı..." rows="15" cols="20"></textarea></td>
+    </tr>
+    <tr>
+      <th>Planlama</th>
+      <th>Uygulama</th>
+    </tr>
+    <tr>
+      <td><textarea id="plan" placeholder="Planlama..." rows="15" cols="20"></textarea></td>
+      <td><textarea id="uygulama" placeholder="uygulama.." rows="15" cols="20"></textarea></td>
+    </tr>
+    <tr>
+      <th>Değerlendirme</th>
+      <th>Öğrenci</th>
+    </tr>
+    <tr>
+      <td><textarea id="degerlendirme" placeholder="Değerlendirme.." rows="15" cols="20"></textarea></td>
+      <th class="table-danger" style="text-align:center;">Bilgiler</th>
+    </tr>
+    <tr>
+      <td><input type="text" id="isim" class="form-control" placeholder="İsim" aria-label="isim" aria-describedby="basic-addon1"></td>
+      <td><input type="text" id="soyisim" class="form-control" placeholder="Soyisim" aria-describedby="basic-addon1"></td>
+    </tr>
+    <tr>
+      <td colspan="2"><button class="btn btn-outline-success form-control" onclick="gonder()">Gönder</button></td>
+    </tr>
+    
+</table><hr></hr>
+
+
+
+  <br><br>
+  <table class="table table-success table-striped" cellspacing="0" id="tabim${doc.id}" width="100%">
+  <thead>
+    <tr>
+      <th colspan="1">Veriler</th>
+      <th colspan="1">Tanı</th>
+    </tr>
+    <tr>
+      <td colspan="1"><textarea id="veri" placeholder="veriler..." rows="15" cols="20">${doc.data().veriler}</textarea></td>
+      <td colspan="1"><textarea id="tani" placeholder="Tanı..." rows="15" cols="20">${doc.data().tanilar}</textarea></td>
+    </tr>
+    <tr>
+      <th colspan="1">Planlama</th>
+      <th colspan="1">Uygulama</th>
+    </tr>
+    <tr>
+      <td colspan="1"><textarea id="plan" placeholder="Planlama..." rows="15" cols="20">${doc.data().planlar}</textarea></td>
+      <td colspan="1"><textarea id="uygulama" placeholder="uygulama.." rows="15" cols="20">${doc.data().uygulamalar}</textarea></td>
+    </tr>
+    
+    <tr>
+      <th colspan="1">Değerlendirme</th>
+      <th>Öğrenci</th>
+    </tr>
+    <tr>
+      <td colspan="1"><textarea id="degerlendirme" placeholder="Değerlendirme.." rows="15" cols="20">${doc.data().degerlendirmeler}</textarea></td>
+      <th colspan="1" style="text-align:center;">${doc.data().isim}<br>${doc.data().soyisim}<br>${doc.data().okulno}</th>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div class="input-group">
+          <input type="text" id="geribildiriminp${doc.id}" class="form-control" placeholder="geribildirim yazınız" aria-label="Username" aria-describedby="basic-addon1">
+          <button id=geribildirimbtn${doc.id} onclick="gonder(this)" class="btn btn-success">Gönder</button>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div class="input-group">
+          <button id=puanbtn${doc.id} onclick="puanver(this)" class="btn btn-success">Puan ver</button>
+          <input type="tel" id="puaninp${doc.id}" class="form-control" placeholder="puan ver.." aria-describedby="basic-addon1">
+        </div>
+      </td>
+    </tr>
+     <tr>
+      <td colspan="2">
+        <div class="input-group">
+          <button id=silbtn${doc.id} onclick="sil(this)" class="btn btn-outline-danger form-control">Sil</button>
+          <button title="${doc.data().okulno}" id=kaydetbtn${doc.id} onclick="kaydet(this)" class="btn btn-outline-primary form-control">Kaydet</button>
+          <button id=kapatbtn${doc.id} onclick="kapat(this)" class="btn btn-outline-dark form-control">Kapat</button>
+        </div>
+      </td>
+    </tr>
+</table><hr></hr>
+  
+
+
+
+
+
+
+  
+  <br><br>
+  <!--<table class="table table-success table-striped" cellspacing="0" id="tabim${doc.id}" width="100%">
+  <thead>
+    <tr>
+      <th>Veriler</th>
+    </tr>
+    <tr>
+      <td><textarea id="veri" placeholder="veriler..." rows="15" cols="20"></textarea></td>
+    </tr>
+    <tr>
+      <th>Tanı</th>
+    </tr>
+    <tr>
+       <td><textarea id="tani" placeholder="Tanı..." rows="15" cols="20"></textarea></td>
+     </tr>
+    <tr>
+      <th>Planlama</th>
+    </tr>
+    <tr>
+      <td><textarea id="plan" placeholder="Planlama..." rows="15" cols="20"></textarea></td>
+    </tr>
+    <tr>
+      <th>Uygulama</th>
+    </tr>
+    <tr>
+      <td><textarea id="uygulama" placeholder="uygulama.." rows="15" cols="20"></textarea></td>
+    </tr>
+    <tr>
+      <th class="table-danger" style="text-align:center;" colspan="5">Bilgiler</th>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div class="input-group">
+          <input type="text" id="isim" class="form-control" placeholder="İsim" aria-label="isim" aria-describedby="basic-addon1">
+      
+        </div>
+      </td>
+      <td colspan="1">
+        <button onclick="alert('İsim ve soyisim yazınız')" class="btn btn-outline-success form-control">Öğrencinin</button>
+        
+      </td>
+      <td colspan="2">
+        <div class="input-group">
+          <input type="text" id="soyisim" class="form-control" placeholder="Soyisim" aria-describedby="basic-addon1">
+        </div>
+      </td>
+    </tr>
+</table><hr></hr>-->
+
+
+
+
+  
+  <!--Bireysel öğrenci getirme-->
+  <!--<br><br>
+  <table class="table table-success table-striped" cellspacing="0" id="tabim${doc.id}" width="100%">
+  <thead>
+    <tr>
+      <th>Veriler</th>
+      <th>Tanı</th>
+      <th>Planlama</th>
+      <th>Uygulama</th>
+      <th>Değerlendirme</th>
+    </tr>
+    <tr>
+      <td><textarea id="veri" placeholder="veriler..." rows="15" cols="20">${doc.data().veriler}</textarea></td>
+      <td><textarea id="tani" placeholder="Tanı..." rows="15" cols="20">${doc.data().tanilar}</textarea></td>
+      <td><textarea id="plan" placeholder="Planlama..." rows="15" cols="20">${doc.data().planlar}</textarea></td>
+      <td><textarea id="uygulama" placeholder="uygulama.." rows="15" cols="20">${doc.data().uygulamalar}</textarea></td>
+      <td><textarea id="degerlendirme" placeholder="Değerlendirme.." rows="15" cols="20">${doc.data().degerlendirmeler}</textarea></td>
+    </tr>
+    <tr>
+      <th class="table-danger" style="text-align:center;" colspan="5">Kontroller</th>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div class="input-group">
+          <input type="text" id="geribildiriminp${doc.id}" class="form-control" placeholder="geribildirim yazınız" aria-label="Username" aria-describedby="basic-addon1">
+          <button id=geribildirimbtn${doc.id} onclick="gonder(this)" class="btn btn-success">Gönder</button>
+        </div>
+      </td>
+      <td colspan="1">
+        <div class="input-group">
+          <button id=silbtn${doc.id} onclick="sil(this)" class="btn btn-outline-danger form-control">Sil</button>
+          <button id=kaydetbtn${doc.id} onclick="kaydet(this)" class="btn btn-outline-primary form-control">Kaydet</button>
+          <button id=kapatbtn${doc.id} onclick="kapat(this)" class="btn btn-outline-dark form-control">Kapat</button>
+        </div>
+      </td>
+      <td colspan="2">
+        <div class="input-group">
+          <button id=puanbtn${doc.id} onclick="puan(this)" class="btn btn-success">Puan ver</button>
+          <input type="tel" id="puaninp${doc.id}" class="form-control" placeholder="puan ver.." aria-describedby="basic-addon1">
+        </div>
+      </td>
+    </tr>
+</table><hr></hr>-->
+
+
+
+
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-storage.js"></script>
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-firestore.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyBkQ4fQMV08poTWn9jp0etX3rh13KndJKU",
+  authDomain: "eylul23-ddb1a.firebaseapp.com",
+  projectId: "eylul23-ddb1a",
+  storageBucket: "eylul23-ddb1a.appspot.com",
+  messagingSenderId: "623804608112",
+  appId: "1:623804608112:web:a358d123fc7f5810898eb5",
+  measurementId: "G-FZXSEG0194"
+      
+    };
+      
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    // Get a non-default Storage bucket
+    //var storage = firebase.app().storage("gs://paketim");
+    const db = firebase.firestore();
+    var storage = firebase.storage();
+    //var storageRef = storage.ref();
+
+  </script>
+  <script src="admin.js"></script>
+</body>
+
+</html>

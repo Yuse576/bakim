@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="uso.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Bakım planı hazırla</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <div id="karaktersecimi" class="main-div">
+    <h3 id="uyari">Kayıt</h3>
+    <button onclick="ogrenci()" class="btn btn-outline-primary">Öğrenci kaydı</button><br>
+    <button onclick="ogretmen()" class="btn btn-outline-primary">Öğretmen kaydı</button>
+  </div>
+  
+  
+  
+  <div id="kayitdiv" class="main-div">
+    <h3 id="uyari">Öğrenci kayıt</h3>
+    <input type="email" placeholder="Email..." id="mail" />
+    <input type="password" placeholder="şifre" id="sifre1" />
+    <input type="password" placeholder="şifre" id="sifre2" />
+    <input type="number" placeholder="Okul no" id="okulno" />
+    <input type="text" placeholder="Öğretmen referans kodu" id="hocakodu" />
+    <input type="text" placeholder="İsim" id="isim" />
+    <input type="text" placeholder="Soyisim" id="soyisim" />
+    <p>Fotoğrafınız</p>
+    <input id="photo" type="file" class="form-control">
+    <button id="kaydologrencibtn" onclick="kaydologrenci()">Kaydol</button>
+  </div>
+
+  <div id="kayitdivhoca" class="main-div">
+    <h3 id="uyarihoca">Öğretmen kayıt</h3>
+    <input type="email" placeholder="Email..." id="mailhoca" />
+    <input type="password" placeholder="şifre" id="sifre1hoca" />
+    <input type="password" placeholder="şifre" id="sifre2hoca" />
+    <input type="text" placeholder="Okul ismi" id="okulhoca" />
+    <input type="text" placeholder="İsim" id="isimhoca" />
+    <input type="text" placeholder="Soyisim" id="soyisimhoca" />
+    <button id="kaydolhocabtn" onclick="kaydolhoca()">Kaydol</button>
+  </div>
+  
+  <div id="user_div" class="loggedin-div">
+    <h3>Hoşgeldinnn</h3>
+    <p id="user_para"></p>
+    <button onclick="logout()">çıkış</button>
+  </div>
+
+
+
+
+
+
+
+  
+  <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-database.js"></script>
+  
+  <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-storage.js"></script>
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+  
+  <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-firestore.js"></script>
+  
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyBkQ4fQMV08poTWn9jp0etX3rh13KndJKU",
+  authDomain: "eylul23-ddb1a.firebaseapp.com",
+  projectId: "eylul23-ddb1a",
+  storageBucket: "eylul23-ddb1a.appspot.com",
+  messagingSenderId: "623804608112",
+  appId: "1:623804608112:web:a358d123fc7f5810898eb5",
+  measurementId: "G-FZXSEG0194"
+      
+    };
+      
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    // Get a non-default Storage bucket
+    //var storage = firebase.app().storage("gs://paketim");
+    const db = firebase.firestore();
+    var storage = firebase.storage();
+    //var storageRef = storage.ref();
+
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyBkQ4fQMV08poTWn9jp0etX3rh13KndJKU",
+  authDomain: "eylul23-ddb1a.firebaseapp.com",
+  projectId: "eylul23-ddb1a",
+  storageBucket: "eylul23-ddb1a.appspot.com",
+  messagingSenderId: "623804608112",
+  appId: "1:623804608112:web:a358d123fc7f5810898eb5",
+  measurementId: "G-FZXSEG0194"
+    };
+    firebase.initializeApp(config);
+
+    
+  </script>
+  <script src="kayit.js"></script>
+</body>
+
+</html>
